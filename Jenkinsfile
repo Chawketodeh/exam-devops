@@ -28,7 +28,8 @@ pipeline {
             steps {
                 sh '''
                     kubectl apply --validate=false -f ci-cd-config/k8s-serveur-deployment.yaml
-                    kubectl apply -f ci-cd-config/k8s-client-deployment.yaml
+                    kubectl apply --validate=false -f ci-cd-config/k8s-client-deployment.yaml
+
                 '''
             }
         }
