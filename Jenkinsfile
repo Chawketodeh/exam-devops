@@ -16,11 +16,11 @@ pipeline {
                 sh 'docker build -t client:latest client'
             }
         }
-        stage('Push to Minikube') {
+        stage('Load images to Minikube') {
             steps {
                 sh '''
-                    docker save serveur:latest | (eval $(minikube docker-env) && docker load)
-                    docker save client:latest | (eval $(minikube docker-env) && docker load)
+                    minikube image load serveur:latest
+                    minikube image load client:latest
                 '''
             }
         }
