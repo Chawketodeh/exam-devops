@@ -16,10 +16,20 @@ pipeline {
                 sh 'docker build -t client:latest client'
             }
         }
+        stage('Push to Minikube') {
+            steps {
+                sh '''
+                    docker save serveur:latest | (eval $(minikube docker-env) && docker load)
+                    docker save client:latest | (eval $(minikube docker-env) && docker load)
+                '''
+            }
+        }
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f ci-cd-config/k8s-serveur-deployment.yaml'
-                sh 'kubectl apply -f ci-cd-config/k8s-client-deployment.yaml'
+                sh '''
+                    kubectl apply -f ci-cd-config/k8s-serveur-deployment.yaml
+                    kubectl apply -f ci-cd-config/k8s-client-deployment.yaml
+                '''
             }
         }
     }
