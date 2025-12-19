@@ -4,7 +4,7 @@ pipeline {
     // Définir les variables globales
     environment {
         DOCKER_REGISTRY = 'docker.io'
-        DOCKER_USERNAME = 'monuser' // Votre nom d'utilisateur Docker Hub
+        DOCKER_USERNAME = 'chawket' // Votre nom d'utilisateur Docker Hub
         REPO_NAME = 'monapp'
         IMAGE_SERVER = "${DOCKER_USERNAME}/${REPO_NAME}-serveur"
         IMAGE_CLIENT = "${DOCKER_USERNAME}/${REPO_NAME}-client"

@@ -1,14 +1,15 @@
-version: '3'
+version: "3.3"
+
 services:
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
-    user: root
-    privileged: true
     ports:
       - "8080:8080"
       - "50000:50000"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./jenkins_home:/var/jenkins_home
+      - /home/devasc/jenkins_home:/var/jenkins_home
+    security_opt:
+      - seccomp:unconfined
+
 
