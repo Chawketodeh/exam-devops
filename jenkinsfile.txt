@@ -5,7 +5,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_USERNAME = 'chawket' // Votre nom d'utilisateur Docker Hub
-        REPO_NAME = 'monapp'
+        REPO_NAME = 'exam-devops'
         IMAGE_SERVER = "${DOCKER_USERNAME}/${REPO_NAME}-serveur"
         IMAGE_CLIENT = "${DOCKER_USERNAME}/${REPO_NAME}-client"
     }
@@ -76,3 +76,4 @@ pipeline {
         }
     }
 }
+
